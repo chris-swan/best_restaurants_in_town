@@ -16,7 +16,11 @@
         <h4>Search restaurants for restaurant, location, type of food or price range.</h4>
         <form class="form-inline" role="form">
           <div class="form-group">
-              <input ng-model="query" type="text" class="form-control" placeholder="Enter item to search here!">
+              <input ng-model="query.name" type="text" class="form-control" placeholder="Search by name"><br>
+              <input ng-model="query.cuisine" type="text" class="form-control" placeholder="Search by cuisine"><br>
+              <label>Show kid frinedly only </label><input ng-model="query.kidFriendly" type="checkbox" class="form-control" ng-true-value="'Kid friendly? YES!'" ng-false-value="" toggle-class="toggle-calm">
+              <br>
+              <label>Only show restaurants available for takeout </label><input ng-model="query.takeOut" type="checkbox" class="form-control" ng-true-value="'YES There is takeout!'" ng-false-value="" toggle-class="toggle-calm">
           </div>
         </form>
       </div>
@@ -26,13 +30,16 @@
             <h2 ng-show="restaurants.length && filtered.length">restaurant List</h2>
             <h2 ng-show="restaurants.length && !filtered.length">No Matches</h2>
             <ul class="list-unstyled">
-              <li ng-repeat="item in filtered = (restaurants | filter:query)">
+              <li ng-repeat="item in filtered = (restaurants | filter:query | orderBy:'-name':reverse)">
                   <span ng-click="editing = true" ng-hide="editing">{{item.name}} <a ng-click="deleteRestaurant(item)">Delete</a></span>
                   <ul>
                     <li><span ng-click="editing = true" ng-hide="editing">{{item.cuisine}}</span></li>
                     <li><span ng-click="editing = true" ng-hide="editing">{{item.address}}</span></li>
                     <li><span ng-click="editing = true" ng-hide="editing">{{item.contact}}</span></li>
                     <li><span ng-click="editing = true" ng-hide="editing">{{item.priceRange}}</span></li>
+                    <li><span ng-click="editing = true" ng-hide="editing">{{item.kidFriendly}}</span></li>
+                    <li><span ng-click="editing = true" ng-hide="editing">{{item.takeOut}}</span></li>
+
                   </ul>
                   <span class="form-group" ng-show="editing" ng-submit="editing = false">
                     <form class="form-inline" role="form">
@@ -41,7 +48,8 @@
                       <input type="text" class="form-control input-sm" ng-model="item.address" placeholder="address" required>
                       <input type="text" class="form-control input-sm" ng-model="item.contact" placeholder="contact" required>
                       <input type="text" class="form-control input-sm" ng-model="item.priceRange" placeholder="priceRange" required>
-                      <label>Kid Friendly?<input type="checkbox" ng-model="checkboxModel.kidFriendly">
+                      <label>Kid Friendly?<input type="checkbox" ng-model="item.kidFriendly" ng-true-value="'Kid friendly? YES!'"  ng-false-value="'Kid Friendly? NO!!!!!!!!!'" ng-init="kidFriendly='Kid Friendly? NO!!!!!!!!!'">
+                        <label>Takeout available? <input type="checkbox" ng-model="item.takeOut" ng-true-value="'YES! There is takeout!'"  ng-false-value="'NO Takeout!!!!!!!!!'" ng-init="takeOut='NO Takeout!!!!!!!!!'"></label>
                       </label>
 
                       <button class="btn btn-default btn-sm" type="submit">Save</button>
@@ -61,7 +69,9 @@
             <input type="text" ng-model="restaurantContact" class="form-control" placeholder="Enter website">
             <input type="text" ng-model="restaurantPriceRange" class="form-control" placeholder="Enter Price Range">
             <br>
-            <label>Kid Friendly? Click here if yes! <input type="checkbox" ng-model="checkboxModel.kidFriendly">
+            <label>Kid Friendly? Click here if yes! <input type="checkbox" ng-model="kidFriendly" ng-true-value="'Kid friendly? YES!'"  ng-false-value="'Kid Friendly? NO!!!!!!!!!'" ng-init="kidFriendly='Kid Friendly? NO!!!!!!!!!'">
+              <br>
+              <label>Takeout available? <input type="checkbox" ng-model="takeOut" ng-true-value="'YES there is takeout!'"  ng-false-value="'NO takeout!!!!!!!!!'" ng-init="takeOut='NO takeout!!!!!!!!!'"></label>
             </label>
 
           </div>
