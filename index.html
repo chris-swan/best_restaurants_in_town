@@ -11,10 +11,12 @@
   <div class="container" ng-controller="RestaurantsCtrl">
     <div class="row">
       <div class="col-md-12">
-        <h4>Search restaurants</h4>
+
+        <h1>Best Restaurants in town.</h1>
+        <h4>Search restaurants for restaurant, location, type of food or price range.</h4>
         <form class="form-inline" role="form">
           <div class="form-group">
-              <input ng-model="query" type="text" class="form-control" placeholder="Search for restaurant...">
+              <input ng-model="query" type="text" class="form-control" placeholder="Enter item to search here!">
           </div>
         </form>
       </div>
@@ -39,6 +41,9 @@
                       <input type="text" class="form-control input-sm" ng-model="item.address" placeholder="address" required>
                       <input type="text" class="form-control input-sm" ng-model="item.contact" placeholder="contact" required>
                       <input type="text" class="form-control input-sm" ng-model="item.priceRange" placeholder="priceRange" required>
+                      <label>Kid Friendly?<input type="checkbox" ng-model="checkboxModel.kidFriendly">
+                      </label>
+
                       <button class="btn btn-default btn-sm" type="submit">Save</button>
                     </form>
                   </span>
@@ -47,14 +52,17 @@
         </div>
     </div>
       <div class="col-md-4">
-        <h2>New restaurant</h2>
+        <h2>Add a new restaurant</h2>
         <form ng-submit="addRestaurant()" class="form-inline" role="form">
           <div class="form-group">
-            <input type="text" ng-model="restaurantName" class="form-control" placeholder="Enter name...">
+            <input type="text" ng-model="restaurantName" class="form-control" placeholder="Enter name">
             <input type="text" ng-model="restaurantCuisine" class="form-control" placeholder="Enter what it serves">
             <input type="text" ng-model="restaurantAddress" class="form-control" placeholder="Enter address">
             <input type="text" ng-model="restaurantContact" class="form-control" placeholder="Enter website">
             <input type="text" ng-model="restaurantPriceRange" class="form-control" placeholder="Enter Price Range">
+            <br>
+            <label>Kid Friendly? Click here if yes! <input type="checkbox" ng-model="checkboxModel.kidFriendly">
+            </label>
 
           </div>
           <button name="submit" class="btn btn-default">Submit</button>
