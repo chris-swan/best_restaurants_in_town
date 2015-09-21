@@ -3,7 +3,7 @@ restaurant.controller('RestaurantsCtrl', function RestaurantCtrl($scope) {
   $scope.restaurants = [];
 
   $scope.addRestaurant = function() {
-    $scope.restaurnts.push({ name: $scope.RestaurantName});
+    $scope.restaurants.push({ name: $scope.restaurantName, cuisine: $scope.restaurantCuisine, address: $scope.restaurantAddress, contact: $scope.restaurantContact});
     $scope.restuarantName = null;
   };
 
