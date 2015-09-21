@@ -1,0 +1,50 @@
+<!doctype html>
+<html ng-app="Restaurant">
+<head>
+  <title>restaurant App</title>
+  <script src="lib/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="js/restaurantsController.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container" ng-controller="restaurantsCtrl">
+    <div class="row">
+      <div class="col-md-12">
+        <h4>Search restaurants</h4>
+        <form class="form-inline" role="form">
+          <div class="form-group">
+              <input ng-model="query" type="text" class="form-control" placeholder="Search for restaurant...">
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2 ng-show="restaurants.length && filtered.length">restaurant List</h2>
+            <h2 ng-show="restaurants.length && !filtered.length">No Matches</h2>
+            <ul>
+              <li ng-repeat="item in filtered = (restaurants | filter:query)">
+                  <span ng-click="editing = true" ng-hide="editing">{{item.name}} <a ng-click="deleterestaurant(item)">Delete</a></span>
+                  <span class="form-group" ng-show="editing" ng-submit="editing = false">
+                    <form class="form-inline" role="form">
+                      <input type="text" class="form-control input-sm" ng-model="item.name" placeholder="name" required>
+                      <button class="btn btn-default btn-sm" type="submit">Save</button>
+                    </form>
+                  </span>
+              </li>
+            </ul>
+        </div>
+    </div>
+      <div class="col-md-4">
+        <h2>New restaurant</h2>
+        <form ng-submit="addrestaurant()" class="form-inline" role="form">
+          <div class="form-group">
+            <input type="text" ng-model="restaurantName" class="form-control" placeholder="Enter name...">
+          </div>
+          <button name="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+  </div>
+</body>
+</html>
