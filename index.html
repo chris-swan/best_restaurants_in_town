@@ -16,9 +16,27 @@
         <h4>Search restaurants for restaurant, location, type of food or price range.</h4>
         <form class="form-inline" role="form">
           <div class="form-group">
-              <input ng-model="query.name" type="text" class="form-control" placeholder="Search by name"><br>
+
+
+            <!-- adding in from here to original code below -->
+
+            <input ng-model="query[queryBy]"></input>
+            <select ng-model="queryBy">
+              <option value="$"></option>
+              <option value="name">name</option>
+              <option value="cuisine">cuisine</option>
+              <option value="address">address</option>
+              <option value="contact">contact</option>
+              <option value="priceRange">price range</option>
+            </select>
+
+              <!-- <input ng-model="query.name" type="text" class="form-control" placeholder="Search by name"><br>
               <input ng-model="query.cuisine" type="text" class="form-control" placeholder="Search by cuisine"><br>
-              <label>Show kid frinedly only </label><input ng-model="query.kidFriendly" type="checkbox" class="form-control" ng-true-value="'Kid friendly? YES!'" ng-false-value="" toggle-class="toggle-calm">
+               -->
+
+              <br>
+
+              <label>Show kid friendly only </label><input ng-model="query.kidFriendly" type="checkbox" class="form-control" ng-true-value="'Kid friendly? YES!'" ng-false-value="" toggle-class="toggle-calm">
               <br>
               <label>Only show restaurants available for takeout </label><input ng-model="query.takeOut" type="checkbox" class="form-control" ng-true-value="'YES There is takeout!'" ng-false-value="" toggle-class="toggle-calm">
           </div>
