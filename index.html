@@ -3,6 +3,7 @@
 <head>
   <title>restaurant App</title>
   <script src="lib/angular.js"></script>
+  <link href="css/styles.css" rel="stylesheet" type="text/css">
   <script src="app.js"></script>
   <script src="js/restaurantsController.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -17,22 +18,15 @@
         <form class="form-inline" role="form">
           <div class="form-group">
 
-
-            <!-- adding in from here to original code below -->
-
             <input ng-model="query[queryBy]"></input>
             <select ng-model="queryBy">
-              <option value="$"></option>
+              <option value="$">All restaurant options</option>
               <option value="name">name</option>
               <option value="cuisine">cuisine</option>
               <option value="address">address</option>
               <option value="contact">contact</option>
               <option value="priceRange">price range</option>
             </select>
-
-              <!-- <input ng-model="query.name" type="text" class="form-control" placeholder="Search by name"><br>
-              <input ng-model="query.cuisine" type="text" class="form-control" placeholder="Search by cuisine"><br>
-               -->
 
               <br>
 
@@ -67,7 +61,7 @@
                       <input type="text" class="form-control input-sm" ng-model="item.contact" placeholder="contact" required>
                       <input type="text" class="form-control input-sm" ng-model="item.priceRange" placeholder="priceRange" required>
                       <label>Kid Friendly?<input type="checkbox" ng-model="item.kidFriendly" ng-true-value="'Kid friendly? YES!'"  ng-false-value="'Kid Friendly? NO!!!!!!!!!'" ng-init="kidFriendly='Kid Friendly? NO!!!!!!!!!'">
-                        <label>Takeout available? <input type="checkbox" ng-model="item.takeOut" ng-true-value="'YES! There is takeout!'"  ng-false-value="'NO Takeout!!!!!!!!!'" ng-init="takeOut='NO Takeout!!!!!!!!!'"></label>
+                        <label>Takeout available? <input type="checkbox" ng-model="item.takeOut" ng-true-value="'YES there is takeout!'"  ng-false-value="'NO Takeout!!!!!!!!!'" ng-init="takeOut='NO Takeout!!!!!!!!!'"></label>
                       </label>
 
                       <button class="btn btn-default btn-sm" type="submit">Save</button>
